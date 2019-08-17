@@ -127,3 +127,16 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES = os.path.join(BASE_DIR, 'static')
 
+TEMPLATE_DEBUG = False
+
+STATIC_ROOT = ''
+
+STATICFILES_DIRS = (
+)
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
+)
+
+
