@@ -24,9 +24,6 @@ class IndexView(ListView):
     #     super().get_context_data(**kwargs);
 
 
-def test(request):
-    return HttpResponse("test")
-
 # #
 # # class PublisherView(ListView):
 # #     model = Publisher
