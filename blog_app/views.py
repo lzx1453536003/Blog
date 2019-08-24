@@ -9,13 +9,17 @@ from django.conf import settings
 from django.core import cache
 from django.views.generic.base import View
 
-from .models import NavigationTag
+from .models import NavigationTag, Article
 
 import logging
 
 logger = logging.getLogger(__name__)
 
+
 class IndexView(ListView):
+    '''
+    导航栏目view
+    '''
     model = NavigationTag;
     template_name = "blog_app/index.html"
     context_object_name = "navigationtag_list"
@@ -23,6 +27,12 @@ class IndexView(ListView):
     # def get_context_data(self, **kwargs):
     #     super().get_context_data(**kwargs);
 
+class ArticleListView(ListView):
+    '''
+    文章列表
+    '''
+    model = Article
+    template_name = "blog_app/article_list.html"
 
 # #
 # # class PublisherView(ListView):

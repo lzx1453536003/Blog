@@ -18,6 +18,18 @@
 
 from django.db import models
 
+# EArticleType = [
+#
+# ]
+
 class NavigationTag(models.Model):
     tag_name = models.CharField(max_length = 30)
+
+class Article(models.Model):
+    title   = models.CharField(max_length = 30)
+    summary = models.CharField(max_length = 100)
+    content = models.CharField(max_length = 300)
+    author  = models.CharField(max_length = 30)
+
+    # article_type =
 
