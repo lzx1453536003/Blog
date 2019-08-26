@@ -1,35 +1,33 @@
-# from django.db import models
-#
-# # # Create your models here.
-# # class Publisher(models.Model):
-# #     name = models.CharField(max_length = 30)
-# #     address = models.CharField(max_length = 50)
-# #     city = models.CharField(max_length=60)
-# #     state_province = models.CharField(max_length=30)
-# #     country = models.CharField(max_length=50)
-# #     website = models.URLField()
-# #
-# #     class Meta:
-# #         ordering = ["-name"]
-# #
-# #     def __str__(self):
-# #         return self.name
-# #
-
 from django.db import models
+from django.urls import reverse
 
-# EArticleType = [
+class Category(models.Model):
+    """
+    文章类别
+    """
+    name = models.CharField('name', max_length=30, unique=True)
+    parent_category = models.ForeignKey('self', blank=True, null=True, on_delete=models.CASCADE)
+
+    class Meta:
+        ordering = ['name']
+
+    def get_absolute_url(self):
+        return reverse("")
+
+
+
+# class NavigationTag(models.Model):
 #
-# ]
+#     tag_name = models.CharField(max_length = 30)
+#
+#     def get_absolute_url(self):
+#         return reverse("blog_app:article_list", kwargs={"article_type" : self.tag_name})
 
-class NavigationTag(models.Model):
-    tag_name = models.CharField(max_length = 30)
-
-class Article(models.Model):
-    title   = models.CharField(max_length = 30)
-    summary = models.CharField(max_length = 100)
-    content = models.CharField(max_length = 300)
-    author  = models.CharField(max_length = 30)
+# class Article(models.Model):
+#     title   = models.CharField(max_length = 30)
+#     summary = models.CharField(max_length = 100)
+#     content = models.CharField(max_length = 300)
+#     author  = models.CharField(max_length = 30)
 
     # article_type =
 
