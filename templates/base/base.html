@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>重剑无锋 大巧不工</title>
+    {% block header %}
+    {% endblock %}
+</head>
+
+
+<body>
+
+<div class='nav'>
+    <ul>
+        {% for navigation_tag in navigationtag_list %}
+            <li><a href="" >{{navigation_tag.tag_name}}</a></li>
+        {% endfor %}
+    </ul>
+</div>
+
+{% block body %}
+{% endblock %}
+
+
+<script src='http://codepen.io/assets/libs/fullpage/jquery.js'></script>
+
+<script src="{% static "blog_app/js/index.js" %}", type="text/javascript"></script>
+</body>
+</html>
