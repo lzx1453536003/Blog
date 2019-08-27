@@ -9,7 +9,7 @@ from django.conf import settings
 from django.core import cache
 from django.views.generic.base import View
 
-from .models import Category
+from .models import Category, Article
 
 import logging
 
@@ -19,9 +19,19 @@ logger = logging.getLogger(__name__)
 class HomePageView(ListView):
     model = Category
     template_name = "blog_app/home_page.html"
-    # def get_queryset(self):
-    #     return [];
 
+class CategoryDetialView(ListView):
+    model = Article
+    template_name = "blog_app/category_detial.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data()
+        categorys  = Category.objects.filter(slug=self.kwargs['category_name'])
+        context['category_article_list'] = []
+        for category in categorys:
+            context['category_article_list'] += Article.objects.filter(category = category)
+
+        return context
 # class IndexView(ListView):
 #     '''
 #     导航栏目view
@@ -38,7 +48,7 @@ class HomePageView(ListView):
 #     文章列表
 #     '''
 #     model = Article
-#     template_name = "blog_app/article_list.html"
+#     template_name = "blog_app/category_detial.html"
 #
 #     def get_context_data(self, **kwargs):
 #         pass

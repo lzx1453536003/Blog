@@ -12,6 +12,6 @@ app_name = "blog_app"
 
 urlpatterns = [
     path(r"", views.HomePageView.as_view()),
-    # path(r"category/<slug:category_name>", views.CategoryView.as_view(), name = "category"),
+    path(r"category_detial/<slug:category_name>", views.CategoryDetialView.as_view(), name = "category_detial"),
     # path(r"article_list/<str:{}>".format(), views.ArticleListView.as_view(), name = "article_list"),
 ]

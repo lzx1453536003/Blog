@@ -1,0 +1,18 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block body %}
+<div class="article_record">
+    {% for article in category_article_list %}
+        <div class="article_title">
+            <a href="#">{{ article.title }}</a>
+        </div>
+        <div class="article_summary">
+            {{ article.summary }}
+            <a href="#" class="desc_readmore">阅读全文</a>
+        </div>
+        <div class="discuss">
+            <a href="#" rel="nofollow">评论</a>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}
