@@ -21,7 +21,5 @@ from blog_app import urls
 
 urlpatterns = [
     path(r'admin/', admin_site.urls),
-    path(r'', include('blog_app.urls', namespace='blog_app'), name = 'blog_app'),
-    path(r'blog/', include('blog_app.urls', namespace='blog_app'), name = 'blog_app')
-
+    path(r'blog/', include('blog_app.urls', namespace='blog_app')),
 ]

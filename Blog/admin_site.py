@@ -6,6 +6,7 @@
 # time      : 2019-08-24 16:56
 
 from django.contrib.admin import AdminSite
+from blog_app.models import Category
 
 class BlogAdminSite(AdminSite):
     site_header = 'DjangoBlog administration'
@@ -19,4 +20,4 @@ class BlogAdminSite(AdminSite):
 
 admin_site = BlogAdminSite(name = 'site')
 
-# admin_site.register(NavigationTag)
+admin_site.register(Category)

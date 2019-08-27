@@ -22,13 +22,6 @@ class HomePageView(ListView):
     # def get_queryset(self):
     #     return [];
 
-class CategoryView(ListView):
-    '''
-    分类目录导航栏
-    '''
-    model = Category
-
-
 # class IndexView(ListView):
 #     '''
 #     导航栏目view

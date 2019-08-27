@@ -13,12 +13,14 @@
 <body>
 
 <div class='nav'>
-    <ul>
-{#        {% for navigation_tag in navigationtag_list %}#}
+{#    <ul>#}
+    {% with category_tree as sub_categorys %}
+    {% include "base/nav_node.html" %}
+    {% endwith %}
+{#        {% for category in category_tree %}#}
 {#            <li><a href="{{ navigation_tag.get_absolute_url }}" >{{navigation_tag.tag_name}}</a></li>#}
 {#        {% endfor %}#}
-        {{ 11111111111 }}
-    </ul>
+{#    </ul>#}
 </div>
 
 {% block body %}

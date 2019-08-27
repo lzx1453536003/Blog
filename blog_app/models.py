@@ -5,29 +5,41 @@ class Category(models.Model):
     """
     文章类别
     """
-    name = models.CharField('name', max_length=30, unique=True)
+    name = models.CharField('name', max_length=30)
     parent_category = models.ForeignKey('self', blank=True, null=True, on_delete=models.CASCADE)
 
     class Meta:
         ordering = ['name']
 
     def get_absolute_url(self):
-        return reverse("")
+        return ""#reverse("")
+
+def get_category_tree(category = None):
+    category_tree = {}
+    categorys = Category.objects.all()
+    sub_categorys = categorys.filter(parent_category=category)
+    for category in sub_categorys:
+        category_tree[category] = {}
+    for key, value in category_tree.items():
+        category_tree[key] = get_category_tree(key)
+    return category_tree
 
 
-
-# class NavigationTag(models.Model):
+# def get_category_tree():
+#     category_tree = {'root':[]}
+#     categorys = Category.objects.all()
+#     for category in categorys:
+#         if category.parent_category:
+#             if category_tree[category.parent_category]:
+#                 category_tree[category.parent_category].append(category)
+#             else:
+#                 category_tree[category.parent_category] = [category]
+#         else:
+#             category_tree['root'].append(category)
+#     return category_tree
 #
-#     tag_name = models.CharField(max_length = 30)
-#
-#     def get_absolute_url(self):
-#         return reverse("blog_app:article_list", kwargs={"article_type" : self.tag_name})
-
-# class Article(models.Model):
-#     title   = models.CharField(max_length = 30)
-#     summary = models.CharField(max_length = 100)
-#     content = models.CharField(max_length = 300)
-#     author  = models.CharField(max_length = 30)
-
-    # article_type =
-
+# def pre_traversal(key):
+#     tree = get_category_tree()
+#     node_list = tree[key]
+#     if node_list:
+#         for node
