@@ -1,4 +1,4 @@
-Django==2.2.3
+Django==2.2.20
 mysqlclient==1.4.2.post1
 django-compressor==2.3
 django-uuslug==1.1.8
